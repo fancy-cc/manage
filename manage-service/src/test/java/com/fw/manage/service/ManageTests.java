@@ -1,6 +1,8 @@
 package com.fw.manage.service;
 
-import com.fw.manage.entity.User;
+import com.alibaba.fastjson.JSON;
+import com.fw.manage.web.domain.HttpResult;
+import com.fw.manage.web.domain.PageResultSet;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,11 +26,32 @@ public class ManageTests {
     private DataSource dataSource;
 
     @Resource
-    private UserService userService;
+    private TestService testService;
 
     @Test
     public void contextLoads() {
         System.out.println("Hello World");
+    }
+
+    @Test
+    public void addTest() {
+        com.fw.manage.entity.Test test = new com.fw.manage.entity.Test();
+        test.setName("尘埃");
+        test.setType(1);
+        HttpResult httpResult = testService.insertSelective(test);
+        System.out.println("httpResult  entry:" + httpResult.getEntry() + "; code:" + httpResult.getCode()
+                + "; mes:" + httpResult.getMessage() + "; status:" + httpResult.getStatus());
+    }
+
+    @Test
+    public void listTest() {
+        List<com.fw.manage.entity.Test> list = testService.list();
+        PageResultSet pageResultSet = new PageResultSet();
+        pageResultSet.setList(list);
+        pageResultSet.setAllRow(list.size());
+        HttpResult httpResult = HttpResult.success(pageResultSet);
+        System.out.println("httpResult  entry:" + JSON.toJSONString(httpResult.getEntry()) + "; code:" + httpResult.getCode()
+                + "; mes:" + httpResult.getMessage() + "; status:" + httpResult.getStatus());
     }
 
     @Test
@@ -92,7 +115,7 @@ public class ManageTests {
     }
 
     @Test
-    public void druidTest() throws Exception{
+    public void druidTest() throws Exception {
         try {
             System.out.println("hello: " + this.dataSource);
         } catch (Exception e) {
@@ -101,27 +124,19 @@ public class ManageTests {
     }
 
     @Test
-    public void userTest() {
-        User user = new User();
-        user.setName("夏天").setType(0);
-        userService.insert(user);
-        System.out.println("user add test: " + user.getId());
-    }
-
-    @Test
-    public void userSelectTest() {
-        User user = userService.select(4L);
-        System.out.println("User: " + user.toString());
-    }
-
-    @Test
     public void arraysSortTest() {
         int[] a = {2, 4, 56, 6, 9, 30};
         Arrays.sort(a);
         System.out.println("a: " + Arrays.toString(a));
 
-        int[][] b = {{2, 4, 6, 8}, {1, 3, 5 ,7}, {11, 22, 33, 44, 55}};
+        int[][] b = {{2, 4, 6, 8}, {1, 3, 5, 7}, {11, 22, 33, 44, 55}};
         System.out.println("b: " + Arrays.deepToString(b));
+    }
+
+    @Test
+    public void userDirTest() {
+        String path = System.getProperty("user.dir");
+        System.out.println("user.dir: " + path);
     }
 
 }
