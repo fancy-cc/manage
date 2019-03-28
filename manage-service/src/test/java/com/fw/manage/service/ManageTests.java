@@ -1,6 +1,7 @@
 package com.fw.manage.service;
 
 import com.alibaba.fastjson.JSON;
+import com.fw.manage.entity.Customer;
 import com.fw.manage.web.domain.HttpResult;
 import com.fw.manage.web.domain.PageResultSet;
 import org.junit.Test;
@@ -28,6 +29,9 @@ public class ManageTests {
     @Resource
     private TestService testService;
 
+    @Resource
+    private CustomerService customerService;
+
     @Test
     public void contextLoads() {
         System.out.println("Hello World");
@@ -44,8 +48,19 @@ public class ManageTests {
     }
 
     @Test
+    public void addCustomerTest() {
+        Customer customer = new Customer();
+        customer.setName("清风徐来");
+        customer.setType(1);
+        HttpResult httpResult = customerService.insertSelective(customer);
+        System.out.println("httpResult  entry:" + httpResult.getEntry() + "; code:" + httpResult.getCode()
+                + "; mes:" + httpResult.getMessage() + "; status:" + httpResult.getStatus());
+    }
+
+    @Test
     public void listTest() {
-        List<com.fw.manage.entity.Test> list = testService.list();
+//        List<com.fw.manage.entity.Test> list = testService.list();
+        List<Customer> list = customerService.list();
         PageResultSet pageResultSet = new PageResultSet();
         pageResultSet.setList(list);
         pageResultSet.setAllRow(list.size());
