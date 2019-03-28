@@ -27,9 +27,6 @@ public class ManageTests {
     private DataSource dataSource;
 
     @Resource
-    private TestService testService;
-
-    @Resource
     private CustomerService customerService;
 
     @Test
@@ -37,15 +34,6 @@ public class ManageTests {
         System.out.println("Hello World");
     }
 
-    @Test
-    public void addTest() {
-        com.fw.manage.entity.Test test = new com.fw.manage.entity.Test();
-        test.setName("尘埃");
-        test.setType(1);
-        HttpResult httpResult = testService.insertSelective(test);
-        System.out.println("httpResult  entry:" + httpResult.getEntry() + "; code:" + httpResult.getCode()
-                + "; mes:" + httpResult.getMessage() + "; status:" + httpResult.getStatus());
-    }
 
     @Test
     public void addCustomerTest() {

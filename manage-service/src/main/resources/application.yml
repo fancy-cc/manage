@@ -23,6 +23,19 @@ spring:
       pool-prepared-statements: false
       filters: stat
 
+  redis:
+    database: 2
+    host: 47.112.2.235
+    port: 6379
+    password: dh4zVyjxBv8MacDs
+    timeout: 60s
+    lettuce:
+      pool:
+        max-active: 8
+        max-wait: -1ms
+        max-idle: 8
+        min-idle: 0
+
   aop:
     auto: true
     proxy-target-class: true
@@ -32,12 +45,6 @@ spring:
       max-file-size: 10
       max-request-size: 100
 
-
 mybatis-plus:
   type-aliases-package: com.fw.manage.entity     # 定义所有操作类的别名所在包
   mapper-locations: classpath:mapper/*.xml       # 所有的mapper映射文件
-#  global-config:
-#    db-config:
-#      logic-delete-value: 0
-#      logic-not-delete-value: 1
-#    sql-injector: com.baomidou.mybatisplus.mapper.LogicSqlInjector
