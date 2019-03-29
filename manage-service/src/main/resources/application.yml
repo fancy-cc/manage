@@ -48,3 +48,6 @@ spring:
 mybatis-plus:
   type-aliases-package: com.fw.manage.entity     # 定义所有操作类的别名所在包
   mapper-locations: classpath:mapper/*.xml       # 所有的mapper映射文件
+
+logging:
+  path: /Users/fanbotao/fbt/fw/manage/log/logback_log

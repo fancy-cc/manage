@@ -1,4 +1,3 @@
-/*
 package com.fw.manage.task;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -16,10 +15,9 @@ public class TimedTask {
     @Value("world")
     private String world;
 
-    @Scheduled(cron = "0 /1 * * * ?")
+//    @Scheduled(cron = "0 */1 * * * ?")
     public void execute() {
         System.out.println(hello + " : Pock Face");
         System.out.println(world + " : charming T");
     }
 }
-*/
