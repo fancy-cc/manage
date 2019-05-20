@@ -1,5 +1,6 @@
 package com.fw.manage.service.impl;
 
+import com.baomidou.dynamic.datasource.annotation.DS;
 import com.fw.manage.entity.Customer;
 import com.fw.manage.dao.CustomerMapperDao;
 import com.fw.manage.service.CustomerService;
@@ -18,6 +19,7 @@ import javax.annotation.Resource;
  * @since 2019-03-27
  */
 @Service
+@DS("mysql")
 public class CustomerServiceImpl extends ServiceImpl<CustomerMapperDao, Customer> implements CustomerService {
 
     @Resource

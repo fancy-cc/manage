@@ -12,6 +12,13 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,11 +41,39 @@ public class ManageTests {
         System.out.println("Hello World");
     }
 
+    @Test
+    public void randomTest() {
+        System.out.println((int)((Math.random()*9+1)*10000));
+    }
+
+    @Test
+    public void jDApiTest() {
+        try {
+            URL url = new URL("https://way.jd.com/TONGLI/UserGet?format=json&nick=绿联数码旗舰店&appkey=ed39190602fdf3bfecbea4c89b85e8c8");
+            try {
+                URLConnection urlConnection = url.openConnection();
+                InputStream inputStream = urlConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                StringBuffer stringBuffer = new StringBuffer();
+                String l = null;
+                while ((l = bufferedReader.readLine()) != null) {
+                    stringBuffer.append(l).append("/n");
+                }
+                System.out.println("stringBuffer: " + stringBuffer.toString());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 
     @Test
     public void addCustomerTest() {
         Customer customer = new Customer();
-        customer.setName("清风徐来");
+        customer.setName("山河");
         customer.setType(1);
         HttpResult httpResult = customerService.insertSelective(customer);
         System.out.println("httpResult  entry:" + httpResult.getEntry() + "; code:" + httpResult.getCode()
