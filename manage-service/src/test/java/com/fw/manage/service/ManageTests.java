@@ -19,11 +19,10 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.time.temporal.ChronoUnit;
+import java.util.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -39,6 +38,33 @@ public class ManageTests {
     @Test
     public void contextLoads() {
         System.out.println("Hello World");
+    }
+
+    @Test
+    public void csortTest() {
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(3);
+        list.add(2);
+        for (int i : list) {
+            System.out.println(i);
+        }
+        System.out.println("________________");
+        Collections.sort(list);
+        for (int i : list) {
+            System.out.println(i);
+        }
+    }
+
+    @Test
+    public void calendarTest() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.DAY_OF_MONTH, -30);
+        date = calendar.getTime();
+        System.out.println("hello: " + sdf.format(date));
     }
 
     @Test
@@ -176,5 +202,12 @@ public class ManageTests {
         String path = System.getProperty("user.dir");
         System.out.println("user.dir: " + path);
     }
+
+    @Test
+    public void basetest() {
+        String phone = "18091393093";
+        System.out.println("hello: " + Base64.getUrlEncoder().encodeToString(phone.getBytes()));
+    }
+
 
 }
