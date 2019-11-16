@@ -42,27 +42,9 @@ spring:
       datasource:
         mysql:
           username: root
-          password: password!@#
+          password: Al&9TpBTX7gpQ3gs
           driver-class-name: com.mysql.cj.jdbc.Driver
-          url: jdbc:mysql://47.112.2.235:3306/pandect?characterEncoding=utf8&useSSL=false
-        postgre:
-          username: javarw
-          password: java2PJ88G7w4hQV4wREhqXcYZxYRCKU
-          driver-class-name: org.postgresql.Driver
-          url: jdbc:postgresql://pgm-wz9aelefxk9346edeo.pg.rds.aliyuncs.com:3432/zhichu?characterEncoding=utf8&useSSL=false
-
-  redis:
-    database: 2
-    host: 47.112.2.235
-    port: 6379
-    password: dh4zVyjxBv8MacDs
-    timeout: 60s
-    lettuce:
-      pool:
-        max-active: 8
-        max-wait: -1ms
-        max-idle: 8
-        min-idle: 0
+          url: jdbc:mysql://49.234.4.249:3306/zhongwei?characterEncoding=utf8&useSSL=false
 
   aop:
     auto: true
