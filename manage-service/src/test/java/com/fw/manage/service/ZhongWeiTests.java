@@ -30,7 +30,7 @@ public class ZhongWeiTests {
         System.out.println("hello::" + list);
     }
 
-    @Test
+  /*  @Test
     public void addTest() {
         WorkOrder workOrder = new WorkOrder();
         workOrder.setAddress("wodi");
@@ -40,9 +40,9 @@ public class ZhongWeiTests {
         workOrder.setServiceTime(LocalDateTime.now());
         HttpResult httpResult = workOrderService.add(workOrder);
         System.out.println("heloo::" + httpResult);
-    }
+    }*/
 
-    @Test
+/*    @Test
     public void allTest() {
         HttpResult httpResult = workOrderService.commit(1L);
         System.out.println("@@@@@111::" + httpResult.getEntry());
@@ -52,11 +52,11 @@ public class ZhongWeiTests {
 
         HttpResult httpResult2 = workOrderService.detail(3L);
         System.out.println("@@@@333::" + httpResult2.getEntry());
-    }
+    }*/
 
-    @Test
+  /*  @Test
     public void countTest() {
         int count = workOrderService.count();
         System.out.println("#####:::" + count);
-    }
+    }*/
 }
