@@ -43,7 +43,12 @@ public class TempTest {
 
     public static void main(String[] args) {
 
-
+        String card = "37292519930209275X";
+        if (Integer.parseInt(card.substring(16).substring(0, 1)) % 2 == 0) {
+            System.out.println("女");
+        } else {
+            System.out.println("男");
+        }
     }
 
     public static void sayHello(String... word) {
