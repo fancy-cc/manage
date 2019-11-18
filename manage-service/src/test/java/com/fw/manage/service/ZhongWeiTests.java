@@ -24,11 +24,11 @@ public class ZhongWeiTests {
         System.out.println("Hello World");
     }
 
-    @Test
+/*    @Test
     public void getOrder() {
-        List<WorkOrder> list = workOrderService.list(2,1);
+        List<WorkOrder> list = workOrderService.commitList(2,1);
         System.out.println("hello::" + list);
-    }
+    }*/
 
   /*  @Test
     public void addTest() {
@@ -54,7 +54,7 @@ public class ZhongWeiTests {
         System.out.println("@@@@333::" + httpResult2.getEntry());
     }*/
 
-  /*  @Test
+    /*@Test
     public void countTest() {
         int count = workOrderService.count();
         System.out.println("#####:::" + count);

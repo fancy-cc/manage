@@ -3,6 +3,14 @@
 <mapper namespace="com.fw.manage.dao.WorkOrderMapperDao">
 
     <select id="selectByPage" resultType="com.fw.manage.entity.WorkOrder">
-        select * from work_order where is_delete = 0 order by id desc limit #{start},#{pageSize}
+        select * from work_order where is_delete = 0 and status != 3 order by id desc limit #{start},#{pageSize}
+    </select>
+
+    <select id="selectByPageCount" resultType="java.lang.Integer">
+        select count(1) from work_order where is_delete = 0 and status != 3
+    </select>
+
+    <select id="selectCommitListByPage" resultType="com.fw.manage.entity.WorkOrder">
+        select * from work_order where is_delete = 0 and status = 3 order by id desc limit #{start},#{pageSize}
     </select>
 </mapper>

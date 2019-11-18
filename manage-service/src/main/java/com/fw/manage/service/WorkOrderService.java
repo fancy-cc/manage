@@ -26,4 +26,6 @@ public interface WorkOrderService extends IService<WorkOrder> {
     HttpResult<WorkOrder> detail(Long id);
 
     int count();
+
+    List<WorkOrder> commitList(Integer pageSize, Integer currentPageNo);
 }

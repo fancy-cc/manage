@@ -75,9 +75,14 @@ public class WorkOrderServiceImpl extends ServiceImpl<WorkOrderMapperDao, WorkOr
 
     @Override
     public int count() {
-        int count = workOrderMapperDao.selectCount(
-                new QueryWrapper<WorkOrder>().lambda().eq(WorkOrder::getIsDelete, 0)
-        );
+        int count = workOrderMapperDao.selectByPageCount();
         return count;
+    }
+
+    @Override
+    public List<WorkOrder> commitList(Integer pageSize, Integer currentPageNo) {
+        int start = (currentPageNo - 1) * pageSize;
+        List<WorkOrder> list = workOrderMapperDao.selectCommitListByPage(start, pageSize);
+        return (list == null || list.isEmpty()) ? new ArrayList<>() : list;
     }
 }

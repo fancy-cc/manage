@@ -16,4 +16,8 @@ import org.apache.ibatis.annotations.Param;
 public interface WorkOrderMapperDao extends BaseMapper<WorkOrder> {
 
     List<WorkOrder> selectByPage(@Param(value = "start") Integer start, @Param(value = "pageSize") Integer pageSize);
+
+    int selectByPageCount();
+
+    List<WorkOrder> selectCommitListByPage(@Param(value = "start") Integer start, @Param(value = "pageSize") Integer pageSize);
 }

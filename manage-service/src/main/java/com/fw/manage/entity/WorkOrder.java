@@ -48,7 +48,7 @@ public class WorkOrder implements Serializable {
     /**
      * 上门服务时间
      */
-    private LocalDateTime serviceTime;
+    private String serviceTime;
 
     /**
      * 手机号
@@ -113,11 +113,11 @@ public class WorkOrder implements Serializable {
         this.address = address;
     }
 
-    public LocalDateTime getServiceTime() {
+    public String getServiceTime() {
         return serviceTime;
     }
 
-    public void setServiceTime(LocalDateTime serviceTime) {
+    public void setServiceTime(String serviceTime) {
         this.serviceTime = serviceTime;
     }
 

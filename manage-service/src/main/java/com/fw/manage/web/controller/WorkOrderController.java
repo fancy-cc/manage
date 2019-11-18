@@ -43,13 +43,25 @@ public class WorkOrderController {
     @GetMapping("/list")
     public HttpResult list(@RequestParam Integer pageSize, @RequestParam Integer currentPageNo) {
         List<WorkOrder> list = workOrderService.list(pageSize, currentPageNo);
-        return HttpResult.success(list);
+        int count = workOrderService.count();
+        PageResultSet pageResultSet = new PageResultSet();
+        pageResultSet.setList(list);
+        pageResultSet.setAllRow(count);
+        pageResultSet.setCurrentPageNo(currentPageNo);
+        pageResultSet.setPageSize(pageSize);
+        return HttpResult.success(pageResultSet);
     }
 
-    @GetMapping("/count")
-    public HttpResult count() {
+    @GetMapping("/commitList")
+    public HttpResult commitList(@RequestParam Integer pageSize, @RequestParam Integer currentPageNo) {
+        List<WorkOrder> list = workOrderService.commitList(pageSize, currentPageNo);
         int count = workOrderService.count();
-        return HttpResult.success(count);
+        PageResultSet pageResultSet = new PageResultSet();
+        pageResultSet.setList(list);
+        pageResultSet.setAllRow(count);
+        pageResultSet.setCurrentPageNo(currentPageNo);
+        pageResultSet.setPageSize(pageSize);
+        return HttpResult.success(pageResultSet);
     }
 
     @PostMapping("/commit")
